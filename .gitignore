@@ -1,0 +1,40 @@
+# Environment & secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+*.pkl
+
+# ML artifacts
+cache/
+catboost_info/
+
+# Generated output (rebuild with `python models/run_pipeline.py`)
+dashboard.jsx
+data/epl_matches.parquet
+data/epl_featured.parquet
+data/upcoming_fixtures.parquet
+data/extra_data.json
+data/dashboard_data.json
+data/predictions.json
+data/live_results.json
+data/live_standings.json
+data/.api_cache/
+dashboard.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
