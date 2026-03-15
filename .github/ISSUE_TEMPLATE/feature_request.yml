@@ -1,0 +1,31 @@
+name: Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Data Pipeline
+        - Feature Engine
+        - ML Pipeline
+        - Sentiment
+        - CLI
+        - Dashboard
+        - Other
+    validations:
+      required: true
