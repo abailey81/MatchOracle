@@ -98,7 +98,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 # =====================================================================
 # Metrics
 # =====================================================================
-def rps(y_true, y_pred):
+def rps(y_true, y_pred) -> float:
     """Ranked Probability Score — lower is better."""
     n = len(y_true)
     y_oh = np.zeros((n, 3))
@@ -108,7 +108,7 @@ def rps(y_true, y_pred):
     return np.mean(np.mean((cp - ct) ** 2, axis=1))
 
 
-def ece(y_true, y_probs, n_bins=10):
+def ece(y_true, y_probs, n_bins=10) -> float:
     """Expected Calibration Error."""
     e = 0.0
     for c in range(3):
@@ -1671,7 +1671,7 @@ def _run_cached_predictions(upcoming_raw, live_sentiment, feature_cols,
 # =====================================================================
 # Main pipeline
 # =====================================================================
-def main():
+def main() -> None:
     print("=" * 70)
     print("  MatchOracle — World-Class Multi-Layer Prediction Engine")
     print("=" * 70)
