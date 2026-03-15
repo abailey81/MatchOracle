@@ -26,6 +26,12 @@ data/live_standings.json
 data/.api_cache/
 dashboard.html
 
+# Testing & type-checking
+.pytest_cache/
+.mypy_cache/
+.coverage
+*.log
+
 # IDE
 .vscode/
 .idea/
