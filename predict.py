@@ -30,7 +30,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 sys.path.insert(0, str(PROJECT_ROOT))
 
 
-def load_env():
+def load_env() -> None:
     """Load API keys from .env file if it exists."""
     env_path = PROJECT_ROOT / ".env"
     if env_path.exists():
@@ -241,7 +241,7 @@ class FixtureSelector:
 # ─────────────────────────────────────────────────────────────────────
 # Fetch fixtures
 # ─────────────────────────────────────────────────────────────────────
-def fetch_fixtures(fdo_key=None, apif_key=None):
+def fetch_fixtures(fdo_key=None, apif_key=None) -> pd.DataFrame:
     """Fetch upcoming EPL fixtures from up to 3 sources."""
     fixtures = []
 
@@ -485,7 +485,7 @@ def _display_data_status(status):
     console.print(Panel(content, title="[bold]Data Status[/bold]", border_style=border))
 
 
-def ensure_data_ready(fdo_key=None, apif_key=None, news_key=None):
+def ensure_data_ready(fdo_key=None, apif_key=None, news_key=None) -> bool:
     """Smart data check — diagnose, display status, auto-build whatever is missing."""
     console.print()
     console.print(Rule("[bold cyan]Checking Data[/bold cyan]", style="cyan"))
@@ -602,7 +602,7 @@ def _fetch_latest_standings(fdo_key=None):
 # ─────────────────────────────────────────────────────────────────────
 # Run predictions
 # ─────────────────────────────────────────────────────────────────────
-def run_predictions(selected_df, fdo_key=None, apif_key=None, news_key=None):
+def run_predictions(selected_df, fdo_key=None, apif_key=None, news_key=None) -> None:
     if not ensure_data_ready(fdo_key, apif_key, news_key):
         console.print("[red]Could not build data.[/red]")
         console.print("[dim]Run: python data/generator.py && python features/engine.py[/dim]")
@@ -727,7 +727,7 @@ def fallback_selector(fixtures_df, max_show=15):
 # ─────────────────────────────────────────────────────────────────────
 # Main
 # ─────────────────────────────────────────────────────────────────────
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="MatchOracle — Interactive EPL Match Predictor",
         formatter_class=argparse.RawDescriptionHelpFormatter,
