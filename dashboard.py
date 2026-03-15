@@ -17,12 +17,13 @@ import os
 import sys
 import webbrowser
 from pathlib import Path
+from typing import Optional
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 OUTPUT_PATH = Path(__file__).resolve().parent / "dashboard.html"
 
 
-def generate_dashboard():
+def generate_dashboard() -> Optional[Path]:
     """Generate a self-contained HTML dashboard from dashboard_data.json."""
     json_path = DATA_DIR / "dashboard_data.json"
     if not json_path.exists():
@@ -628,7 +629,7 @@ renderCalibration();
     return OUTPUT_PATH
 
 
-def serve_dashboard(port=8000):
+def serve_dashboard(port=8000) -> None:
     """Start an HTTP server to share the dashboard over the network."""
     import http.server
     import socket
@@ -670,7 +671,7 @@ def serve_dashboard(port=8000):
         server.server_close()
 
 
-def main():
+def main() -> None:
     import argparse
     parser = argparse.ArgumentParser(description="MatchOracle — Dashboard Generator")
     parser.add_argument("--no-open", action="store_true", help="Don't open in browser")
