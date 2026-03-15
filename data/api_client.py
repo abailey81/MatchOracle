@@ -101,12 +101,12 @@ class CircuitBreaker:
                 return True
             return False
 
-    def record_success(self):
+    def record_success(self) -> None:
         with self._lock:
             self._failures = 0
             self._state = "CLOSED"
 
-    def record_failure(self):
+    def record_failure(self) -> None:
         with self._lock:
             self._failures += 1
             if self._failures >= self.failure_threshold:
@@ -146,7 +146,7 @@ class DiskCache:
             path.unlink(missing_ok=True)
             return None
 
-    def set(self, key: str, value: Any, ttl: Optional[int] = None):
+    def set(self, key: str, value: Any, ttl: Optional[int] = None) -> None:
         ttl = ttl or self.default_ttl
         data = {"value": value, "expires_at": time.time() + ttl, "stored_at": time.time()}
         path = self._key_path(key)
